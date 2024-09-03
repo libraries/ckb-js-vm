@@ -313,10 +313,10 @@ __attribute__((naked)) void _longjmp(jmp_buf b, int n) {
 
 int strcoll(const char *l, const char *r) { return strcmp(l, r); }
 
-int *__errno_location(void) {
-    static int error = -1;
-    return &error;
-}
+// int *__errno_location(void) {
+//     static int error = -1;
+//     return &error;
+// }
 
 char *strerror(int e) {
     static char *errorstr = "There is an error";

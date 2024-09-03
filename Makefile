@@ -60,6 +60,9 @@ CFLAGS2 += -isystem deps/musl/release/include
 LDFLAGS2 := -static --gc-sections -nostdlib
 LDFLAGS2 += -Ldeps/compiler-rt-builtins-riscv/build -lcompiler-rt
 LDFLAGS2 += --sysroot deps/musl/release -Ldeps/musl/release/lib -lc -lgcc -nostdlib
+LDFLAGS2 += -wrap=gettimeofday
+LDFLAGS2 += -wrap=printf
+LDFLAGS2 += -wrap=stdout
 
 OBJDIR=build
 
@@ -68,7 +71,7 @@ QJS_OBJS=$(OBJDIR)/qjs.o $(OBJDIR)/quickjs.o $(OBJDIR)/libregexp.o $(OBJDIR)/lib
 		$(OBJDIR)/libbf.o $(OBJDIR)/cmdopt.o
 
 STD_OBJS=$(OBJDIR)/string_impl.o $(OBJDIR)/malloc_impl.o $(OBJDIR)/math_impl.o \
-		$(OBJDIR)/math_log_impl.o $(OBJDIR)/math_pow_impl.o $(OBJDIR)/printf_impl.o $(OBJDIR)/stdio_impl.o \
+		$(OBJDIR)/math_log_impl.o $(OBJDIR)/printf_impl.o $(OBJDIR)/stdio_impl.o \
 		$(OBJDIR)/locale_impl.o
 
 
@@ -81,8 +84,8 @@ deps/musl/release:
 	cd deps/musl && \
 	CLANG=$(CC) ./ckb/build.sh
 
-build/ckb-js-vm: $(STD_OBJS) $(QJS_OBJS) $(OBJDIR)/impl.o deps/compiler-rt-builtins-riscv/build/libcompiler-rt.a
-	$(LD) $(LDFLAGS) -o $@ $^
+build/ckb-js-vm: $(STD_OBJS) $(QJS_OBJS) deps/compiler-rt-builtins-riscv/build/libcompiler-rt.a
+	$(LD) $(LDFLAGS2) -o $@ $^
 	cp $@ $@.debug
 	$(OBJCOPY) --strip-debug --strip-all $@
 	ls -lh build/ckb-js-vm
@@ -98,10 +101,6 @@ $(OBJDIR)/%.o: include/c-stdlib/src/%.c
 $(OBJDIR)/%.o: include/%.c
 	@echo build $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
-
-$(OBJDIR)/impl.o: deps/ckb-c-stdlib/libc/src/impl.c
-	@echo build $<
-	@$(CC) $(filter-out -DCKB_DECLARATION_ONLY, $(CFLAGS)) -c -o $@ $<
 
 test:
 	make -f tests/examples/Makefile

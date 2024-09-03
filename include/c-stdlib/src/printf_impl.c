@@ -991,7 +991,7 @@ int fctprintf(void (*out)(char character, void *arg), void *arg, const char *for
 // syscall
 int ckb_debug(const char *s);
 
-int printf(const char *format, ...) {
+int __wrap_printf(const char *format, ...) {
     static char buf[CKB_C_STDLIB_PRINTF_BUFFER_SIZE];
     va_list va;
     va_start(va, format);

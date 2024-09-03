@@ -4,7 +4,7 @@
 #include <string.h>
 
 FILE *stdin;
-FILE *stdout;
+FILE *__wrap_stdout;
 FILE *stderr;
 
 int ckb_exit(signed char code);
@@ -145,10 +145,6 @@ int fprintf(FILE *__stream, const char *__format, ...) {
     return 0;
 }
 
-int vfprintf(FILE *__s, const char *__format, ...) {
-    NOT_IMPL(vfprintf);
-    return 0;
-}
 int vsprintf(char *__s, const char *__format, ...) {
     NOT_IMPL(vsprintf);
     return 0;
@@ -272,11 +268,6 @@ size_t fread(void *ptr, size_t size, size_t nitems, FILE *stream) {
     // The return value should be the number of items written to the ptr
     uint32_t s = size;
     return (bytes_to_read + s - 1) / s;
-}
-
-size_t fwrite(const void *__ptr, size_t __size, size_t __n, FILE *__s) {
-    NOT_IMPL(fwrite);
-    return 0;
 }
 
 int fseek(FILE *stream, long int offset, int whence) {
