@@ -26,13 +26,10 @@
  * THE SOFTWARE.
  */
 #include <stdlib.h>
-#include "my_stdlib.h"
 #include <stdio.h>
-#include "my_stdio.h"
 #include <stdarg.h>
 #include <string.h>
-#include "my_string.h"
-#include "my_assert.h"
+#include <assert.h>
 #include "cmdopt.h"
 
 typedef struct {
