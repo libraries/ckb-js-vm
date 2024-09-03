@@ -33,7 +33,7 @@
 // #include <sys/time.h>
 // #include <time.h>
 // #include <fenv.h>
-#include "my_math.h"
+#include <math.h>
 #include <string.h>
 
 #include "cutils.h"
@@ -45,12 +45,6 @@
 #endif
 
 #include "mocked.h"
-
-int isnan(double x) { return __builtin_isnan(x); }
-
-int isfinite(double x) { return __builtin_isfinite(x); }
-
-double trunc(double x) { return __builtin_truncl(x); }
 
 #define OPTIMIZE         1
 #define SHORT_OPCODES    1

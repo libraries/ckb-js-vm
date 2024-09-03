@@ -1,5 +1,3 @@
-
-
 #include "mocked.h"
 #include "ckb_syscall_apis.h"
 
