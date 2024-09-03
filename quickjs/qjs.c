@@ -23,19 +23,19 @@
  * THE SOFTWARE.
  */
 #include <stdlib.h>
-#include "my_stdlib.h"
 #include <stdio.h>
-#include "my_stdio.h"
 #include <stdarg.h>
 #include <string.h>
 #include <stddef.h>
 #include <stdbool.h>
-#include "my_malloc.h"
+#include <malloc.h>
 #include "cutils.h"
 #include "std_module.h"
 #include "ckb_module.h"
 #include "ckb_exec.h"
 #include "cmdopt.h"
+#include "ckb_cell_fs.h"
+#include "mocked.h"
 
 #define MAIN_FILE_NAME "main.js"
 #define MAIN_FILE_NAME_BC "main.bc"

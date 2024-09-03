@@ -95,7 +95,7 @@ build/ckb-js-vm: $(STD_OBJS) $(QJS_OBJS) deps/compiler-rt-builtins-riscv/build/l
 
 $(OBJDIR)/%.o: quickjs/%.c
 	@echo build $<
-	@$(CC) $(CFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
 
 $(OBJDIR)/%.o: include/c-stdlib/src/%.c
 	@echo build $<
@@ -105,45 +105,45 @@ $(OBJDIR)/%.o: include/%.c
 	@echo build $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
-$(OBJDIR)/ckb_module.o: quickjs/ckb_module.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/ckb_module.o: quickjs/ckb_module.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-$(OBJDIR)/cmdopt.o: quickjs/cmdopt.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/cmdopt.o: quickjs/cmdopt.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-$(OBJDIR)/cutils.o: quickjs/cutils.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/cutils.o: quickjs/cutils.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-$(OBJDIR)/libbf.o: quickjs/libbf.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/libbf.o: quickjs/libbf.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-$(OBJDIR)/libregexp.o: quickjs/libregexp.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/libregexp.o: quickjs/libregexp.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-$(OBJDIR)/libunicode.o: quickjs/libunicode.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/libunicode.o: quickjs/libunicode.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-$(OBJDIR)/mocked.o: quickjs/mocked.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/mocked.o: quickjs/mocked.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
 # $(OBJDIR)/qjs.o: quickjs/qjs.c
 # 	@echo build $<
 # 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-$(OBJDIR)/quickjs.o: quickjs/quickjs.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/quickjs.o: quickjs/quickjs.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-$(OBJDIR)/std_module.o: quickjs/std_module.c
-	@echo build $<
-	@$(CC) $(CFLAGS2) -c -o $@ $<
+# $(OBJDIR)/std_module.o: quickjs/std_module.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
 test:
 	make -f tests/examples/Makefile
