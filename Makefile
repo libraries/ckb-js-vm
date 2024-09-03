@@ -103,6 +103,10 @@ $(OBJDIR)/%.o: include/%.c
 	@echo build $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
+$(OBJDIR)/cutils.o: quickjs/cutils.c
+	@echo build $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
+
 $(OBJDIR)/libbf.o: quickjs/libbf.c
 	@echo build $<
 	@$(CC) $(CFLAGS2) -c -o $@ $<
