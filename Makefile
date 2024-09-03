@@ -103,6 +103,10 @@ $(OBJDIR)/%.o: include/%.c
 	@echo build $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
+# $(OBJDIR)/ckb_module.o: quickjs/ckb_module.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
+
 $(OBJDIR)/cmdopt.o: quickjs/cmdopt.c
 	@echo build $<
 	@$(CC) $(CFLAGS2) -c -o $@ $<
@@ -112,6 +116,30 @@ $(OBJDIR)/cutils.o: quickjs/cutils.c
 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
 $(OBJDIR)/libbf.o: quickjs/libbf.c
+	@echo build $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
+
+$(OBJDIR)/libregexp.o: quickjs/libregexp.c
+	@echo build $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
+
+$(OBJDIR)/libunicode.o: quickjs/libunicode.c
+	@echo build $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
+
+$(OBJDIR)/mocked.o: quickjs/mocked.c
+	@echo build $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
+
+# $(OBJDIR)/qjs.o: quickjs/qjs.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
+
+# $(OBJDIR)/quickjs.o: quickjs/quickjs.c
+# 	@echo build $<
+# 	@$(CC) $(CFLAGS2) -c -o $@ $<
+
+$(OBJDIR)/std_module.o: quickjs/std_module.c
 	@echo build $<
 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
