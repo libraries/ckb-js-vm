@@ -64,6 +64,8 @@ LDFLAGS2 += -wrap=gettimeofday
 LDFLAGS2 += -wrap=printf
 LDFLAGS2 += -wrap=stderr
 LDFLAGS2 += -wrap=stdout
+LDFLAGS2 += -wrap=fesetround
+LDFLAGS2 += -wrap=localtime_r
 
 OBJDIR=build
 
