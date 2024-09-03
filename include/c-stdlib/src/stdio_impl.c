@@ -5,7 +5,7 @@
 
 FILE *stdin;
 FILE *__wrap_stdout;
-FILE *stderr;
+FILE *__wrap_stderr;
 
 int ckb_exit(signed char code);
 

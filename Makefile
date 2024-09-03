@@ -62,6 +62,7 @@ LDFLAGS2 += -Ldeps/compiler-rt-builtins-riscv/build -lcompiler-rt
 LDFLAGS2 += --sysroot deps/musl/release -Ldeps/musl/release/lib -lc -lgcc -nostdlib
 LDFLAGS2 += -wrap=gettimeofday
 LDFLAGS2 += -wrap=printf
+LDFLAGS2 += -wrap=stderr
 LDFLAGS2 += -wrap=stdout
 
 OBJDIR=build
@@ -101,6 +102,10 @@ $(OBJDIR)/%.o: include/c-stdlib/src/%.c
 $(OBJDIR)/%.o: include/%.c
 	@echo build $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
+
+$(OBJDIR)/libbf.o: quickjs/libbf.c
+	@echo build $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
 
 test:
 	make -f tests/examples/Makefile
