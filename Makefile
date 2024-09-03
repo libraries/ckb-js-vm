@@ -103,9 +103,9 @@ $(OBJDIR)/%.o: include/%.c
 	@echo build $<
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
-# $(OBJDIR)/ckb_module.o: quickjs/ckb_module.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
+$(OBJDIR)/ckb_module.o: quickjs/ckb_module.c
+	@echo build $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
 
 $(OBJDIR)/cmdopt.o: quickjs/cmdopt.c
 	@echo build $<
@@ -135,9 +135,9 @@ $(OBJDIR)/mocked.o: quickjs/mocked.c
 # 	@echo build $<
 # 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
-# $(OBJDIR)/quickjs.o: quickjs/quickjs.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
+$(OBJDIR)/quickjs.o: quickjs/quickjs.c
+	@echo build $<
+	@$(CC) $(CFLAGS2) -c -o $@ $<
 
 $(OBJDIR)/std_module.o: quickjs/std_module.c
 	@echo build $<
