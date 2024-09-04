@@ -73,9 +73,7 @@ QJS_OBJS=$(OBJDIR)/qjs.o $(OBJDIR)/quickjs.o $(OBJDIR)/libregexp.o $(OBJDIR)/lib
 		$(OBJDIR)/cutils.o $(OBJDIR)/mocked.o $(OBJDIR)/std_module.o $(OBJDIR)/ckb_module.o $(OBJDIR)/ckb_cell_fs.o \
 		$(OBJDIR)/libbf.o $(OBJDIR)/cmdopt.o
 
-STD_OBJS=$(OBJDIR)/string_impl.o $(OBJDIR)/malloc_impl.o \
-		$(OBJDIR)/printf_impl.o $(OBJDIR)/stdio_impl.o \
-		$(OBJDIR)/locale_impl.o
+STD_OBJS=$(OBJDIR)/malloc_impl.o $(OBJDIR)/printf_impl.o $(OBJDIR)/stdio_impl.o
 
 
 all: build/ckb-js-vm
