@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-FILE *stdin;
-FILE *__wrap_stdout;
-FILE *__wrap_stderr;
+// FILE *stdin;
+// FILE *__wrap_stdout;
+// FILE *__wrap_stderr;
 
 int ckb_exit(signed char code);
 
@@ -45,10 +45,10 @@ static inline long __internal_syscall(long n, long _a0, long _a1, long _a2, long
 #define ckb_syscall(n, a, b, c, d, e, f) \
     __internal_syscall(n, (long)(a), (long)(b), (long)(c), (long)(d), (long)(e), (long)(f))
 
-#define NOT_IMPL(name)                                                 \
-    do {                                                               \
-        printf("The %s is not implemented in mocked_stdio.c ", #name); \
-        ckb_exit(-1);                                                  \
+#define NOT_IMPL(name)                                                  \
+    do {                                                                \
+        printf("The %s is not implemented in mocked_stdio.c\n", #name); \
+        ckb_exit(-1);                                                   \
     } while (0)
 
 FILE *allocfile() {
@@ -217,15 +217,15 @@ int getline(char **__lineptr, size_t *__n, FILE *__stream) {
     return 0;
 }
 
-int fputs(const char *__s, FILE *__stream) {
-    NOT_IMPL(fputs);
-    return 0;
-}
+// int fputs(const char *__s, FILE *__stream) {
+//     NOT_IMPL(fputs);
+//     return 0;
+// }
 
-int puts(const char *__s) {
-    NOT_IMPL(puts);
-    return 0;
-}
+// int puts(const char *__s) {
+//     NOT_IMPL(puts);
+//     return 0;
+// }
 
 int ungetc(int __c, FILE *__stream) {
     NOT_IMPL(ungetc);

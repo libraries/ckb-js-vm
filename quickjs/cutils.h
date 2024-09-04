@@ -298,7 +298,7 @@ void rqsort(void *base, size_t nmemb, size_t size,
   do {                     \
     if (!(cond)) {         \
       err = code;          \
-      printf("checking failed on %s:%d, code = %d", __FILE__, __LINE__, code); \
+      printf("checking failed on %s:%d, code = %d\n", __FILE__, __LINE__, code); \
       goto exit;           \
     }                      \
   } while (0)
@@ -308,7 +308,7 @@ void rqsort(void *base, size_t nmemb, size_t size,
     int code = (_code); \
     if (code != 0) {    \
       err = code;       \
-      printf("checking failed on %s:%d, code = %d", __FILE__, __LINE__, code); \
+      printf("checking failed on %s:%d, code = %d\n", __FILE__, __LINE__, code); \
       goto exit;        \
     }                   \
   } while (0)

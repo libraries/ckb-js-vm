@@ -14,7 +14,6 @@ endif
 CFLAGS := --target=riscv64 -march=rv64imc_zba_zbb_zbc_zbs
 CFLAGS += -g -Os \
 		-Wall -Werror -Wno-nonnull -Wno-unused-function \
-		-fno-builtin-printf -fno-builtin-memcmp \
 		-nostdinc -nostdlib \
 		-fdata-sections -ffunction-sections
 
@@ -39,7 +38,6 @@ LDFLAGS += -Ldeps/compiler-rt-builtins-riscv/build -lcompiler-rt
 CFLAGS2 := --target=riscv64 -march=rv64imc_zba_zbb_zbc_zbs
 CFLAGS2 += -g -Os \
 		-Wall -Werror -Wno-nonnull -Wno-unused-function \
-		-fno-builtin-printf -fno-builtin-memcmp \
 		-nostdinc -nostdlib \
 		-fdata-sections -ffunction-sections
 
@@ -61,9 +59,6 @@ LDFLAGS2 := -static --gc-sections -nostdlib
 LDFLAGS2 += -Ldeps/compiler-rt-builtins-riscv/build -lcompiler-rt
 LDFLAGS2 += --sysroot deps/musl/release -Ldeps/musl/release/lib -lc -lgcc -nostdlib
 LDFLAGS2 += -wrap=gettimeofday
-LDFLAGS2 += -wrap=printf
-LDFLAGS2 += -wrap=stderr
-LDFLAGS2 += -wrap=stdout
 LDFLAGS2 += -wrap=fesetround
 LDFLAGS2 += -wrap=localtime_r
 
@@ -73,7 +68,7 @@ QJS_OBJS=$(OBJDIR)/qjs.o $(OBJDIR)/quickjs.o $(OBJDIR)/libregexp.o $(OBJDIR)/lib
 		$(OBJDIR)/cutils.o $(OBJDIR)/mocked.o $(OBJDIR)/std_module.o $(OBJDIR)/ckb_module.o $(OBJDIR)/ckb_cell_fs.o \
 		$(OBJDIR)/libbf.o $(OBJDIR)/cmdopt.o
 
-STD_OBJS=$(OBJDIR)/printf_impl.o $(OBJDIR)/stdio_impl.o
+STD_OBJS=$(OBJDIR)/stdio_impl.o
 
 
 all: build/ckb-js-vm
@@ -102,46 +97,6 @@ $(OBJDIR)/%.o: include/c-stdlib/src/%.c
 $(OBJDIR)/%.o: include/%.c
 	@echo build $<
 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/ckb_module.o: quickjs/ckb_module.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/cmdopt.o: quickjs/cmdopt.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/cutils.o: quickjs/cutils.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/libbf.o: quickjs/libbf.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/libregexp.o: quickjs/libregexp.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/libunicode.o: quickjs/libunicode.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/mocked.o: quickjs/mocked.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/qjs.o: quickjs/qjs.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/quickjs.o: quickjs/quickjs.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
-
-# $(OBJDIR)/std_module.o: quickjs/std_module.c
-# 	@echo build $<
-# 	@$(CC) $(CFLAGS2) -c -o $@ $<
 
 test:
 	make -f tests/examples/Makefile
