@@ -4,7 +4,7 @@
 
 #include <stddef.h>
 #include <stdint.h>
-#include <my_stdint.h>
+#include "my_stdint.h"
 
 #include "../../include/ckb_cell_fs.h"
 
