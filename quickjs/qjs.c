@@ -90,7 +90,6 @@ void js_std_loop(JSContext *ctx) {
 }
 
 int compile_from_file(JSContext *ctx) {
-    enable_local_access(1);
     char buf[1024 * 512];
     int buf_len = read_local_file(buf, sizeof(buf));
     if (buf_len < 0 || buf_len == sizeof(buf)) {
@@ -183,7 +182,6 @@ exit:
 
 static int run_from_local_file(JSContext *ctx, bool enable_fs) {
     printf("Run from file, local access enabled. For Testing only.\n");
-    enable_local_access(1);
     char buf[1024 * 512];
     int count = read_local_file(buf, sizeof(buf));
     if (count < 0 || count == sizeof(buf)) {
